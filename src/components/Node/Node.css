@@ -1,6 +1,8 @@
-.node {
+td {
   width: 25px;
   height: 25px;
-  display: inline-block;
-  border: 1px solid gray;
+  border: 1px solid black;
+}
+.wall {
+  background-color: black;
 }
