@@ -5,7 +5,23 @@ import "./Grid.css";
 
 const Grid = ({ buttonTypeActive }) => {
   const [grid, setGrid] = useState([]);
+  const [isMouseDown, setIsMouseDown] = useState(false);
 
+  useEffect(
+    () => {
+      document.addEventListener("mousedown", handleMouseDown);
+      document.addEventListener("mouseup", handleMouseUp);
+    },
+    //eslint-disable-next-line
+    [buttonTypeActive]
+  );
+
+  function handleMouseDown() {
+    setIsMouseDown(true);
+  }
+  function handleMouseUp() {
+    setIsMouseDown(false);
+  }
   useEffect(() => {
     const newGrid = createInitialGrid();
     setGrid(newGrid);
@@ -22,6 +38,7 @@ const Grid = ({ buttonTypeActive }) => {
                 const { col, row } = node;
                 return (
                   <Node
+                    isMouseDown={isMouseDown}
                     buttonTypeActive={buttonTypeActive}
                     key={`${row}-${col}`}
                     col={col}
