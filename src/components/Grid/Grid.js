@@ -16,7 +16,8 @@ const Grid = ({ buttonTypeActive }) => {
     [buttonTypeActive]
   );
 
-  function handleMouseDown() {
+  function handleMouseDown(e) {
+    e.preventDefault();
     setIsMouseDown(true);
   }
   function handleMouseUp() {
