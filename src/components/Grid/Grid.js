@@ -13,6 +13,7 @@ const Grid = () => {
   const FINISH_NODE_ROW = 10;
 
   const [grid, setGrid] = useState([]);
+  const [mouseDown, setMouseDown] = useState(false);
   //make a new grid on mount with start and finish nodes
   useEffect(() => {
     const initialGrid = createGrid(
@@ -24,23 +25,39 @@ const Grid = () => {
     setGrid(initialGrid);
     //eslint-disable-next-line
   }, []);
-
+  const handleMouseDown = (e) => {
+    e.preventDefault();
+    setMouseDown(true);
+  };
+  const handleMouseUp = () => {
+    setMouseDown(false);
+  };
+  const updateWithWalls = (col, row) => {
+    console.log(col, row);
+  };
   return (
     <>
-      <table className="grid">
+      <table
+        onMouseDown={handleMouseDown}
+        onMouseUp={handleMouseUp}
+        className="grid"
+      >
         <tbody>
           {grid.map((row, rowId) => {
             return (
               <tr className={`row ${rowId}`} key={rowId}>
                 {row.map((node) => {
-                  const { col, row, isStart, isFinish } = node;
+                  const { col, row, isStart, isFinish, isWall } = node;
                   return (
                     <Node
                       key={`${row}-${col}`}
                       col={col}
                       row={row}
                       isStart={isStart}
+                      isWall={isWall}
                       isFinish={isFinish}
+                      mouseDown={mouseDown}
+                      updateWithWalls={updateWithWalls}
                     />
                   );
                 })}
