@@ -3,6 +3,18 @@ td {
   height: 25px;
   border: 1px solid black;
 }
+.unvisited {
+  background-color: white;
+}
 .wall {
   background-color: black;
+}
+.visited {
+  background-color: blue;
+}
+.start {
+  background-color: green;
+}
+.finish {
+  background-color: red;
 }

@@ -3,9 +3,9 @@ const columns = 50;
 
 export const createInitialGrid = () => {
   const grid = [];
-  for (let row = 1; row < rows + 1; row++) {
+  for (let row = 0; row < rows; row++) {
     const currentRow = [];
-    for (let col = 1; col < columns + 1; col++) {
+    for (let col = 0; col < columns; col++) {
       currentRow.push(createNode(col, row));
     }
     grid.push(currentRow);
@@ -14,5 +14,5 @@ export const createInitialGrid = () => {
 };
 
 const createNode = (col, row) => {
-  return { col, row };
+  return { col, row, typeOfNode: "unvisited", distance: Infinity };
 };
