@@ -1,7 +1,7 @@
-const rows = 20;
-const columns = 50;
+export const rows = 20;
+export const columns = 50;
 
-export const createInitialGrid = () => {
+export const createGrid = () => {
   const grid = [];
   for (let row = 0; row < rows; row++) {
     const currentRow = [];
@@ -14,5 +14,5 @@ export const createInitialGrid = () => {
 };
 
 const createNode = (col, row) => {
-  return { col, row, typeOfNode: "unvisited", distance: Infinity };
+  return { col, row, typeOfNode: "unvisited" };
 };

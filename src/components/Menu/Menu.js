@@ -3,7 +3,7 @@ import MenuButton from "../MenuButton/MenuButton";
 
 import "./Menu.css";
 
-const Menu = ({ setButtonTypeActive, setUpdateGrid }) => {
+const Menu = ({ setButtonTypeActive, setUpdateGrid, start }) => {
   const buttons = [
     { type: "wall" },
     { type: "eraser" },
@@ -27,6 +27,9 @@ const Menu = ({ setButtonTypeActive, setUpdateGrid }) => {
         );
       })}
       <button onClick={() => setUpdateGrid(true)} type="button">
+        update
+      </button>
+      <button onClick={start} type="button">
         Start
       </button>
     </form>

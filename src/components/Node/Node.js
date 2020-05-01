@@ -23,12 +23,14 @@ const Node = ({
     [updateGrid]
   );
   const handleNodeType = () => {
-    if (isMouseDown === true) {
-      if (buttonTypeActive === "wall") {
-        setNodeType("wall");
-      }
-      if (buttonTypeActive === "eraser") {
-        setNodeType("unvisited");
+    if (isMouseDown) {
+      if (nodeType !== "finish" && nodeType !== "start") {
+        if (buttonTypeActive === "wall") {
+          setNodeType("wall");
+        }
+        if (buttonTypeActive === "eraser") {
+          setNodeType("unvisited");
+        }
       }
     }
   };
