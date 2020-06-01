@@ -7,20 +7,21 @@ import "./Grid.css";
 
 const Grid = () => {
   // initial start and finish nodes coordinates
-  const START_NODE_COL = 10;
-  const START_NODE_ROW = 10;
-  const FINISH_NODE_COL = 30;
-  const FINISH_NODE_ROW = 10;
 
+  const START_ROW = 10;
+  const START_COL = 10;
+  const FINISH_COL = 30;
+  const FINISH_ROW = 10;
   const [grid, setGrid] = useState([]);
   const [mouseDown, setMouseDown] = useState(false);
+
   //make a new grid on mount with start and finish nodes
   useEffect(() => {
     const initialGrid = createGrid(
-      FINISH_NODE_COL,
-      FINISH_NODE_ROW,
-      START_NODE_COL,
-      START_NODE_ROW
+      FINISH_COL,
+      FINISH_ROW,
+      START_COL,
+      START_ROW
     );
     setGrid(initialGrid);
     //eslint-disable-next-line
@@ -33,11 +34,12 @@ const Grid = () => {
   const handleMouseUp = () => {
     setMouseDown(false);
   };
-  const updateWithWalls = (col, row) => {
+  const updateWithWalls = (col, row, isWall) => {
     let gridCopy = [...grid];
-    gridCopy[row][col].isWall = true;
+    gridCopy[row][col].isWall = !isWall;
     setGrid(gridCopy);
   };
+
   return (
     <>
       <table
