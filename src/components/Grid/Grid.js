@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { dijkstra } from "../../algorithms/dijkstra";
+// import { dijkstra } from "../../algorithms/dijkstra";
 import { createGrid } from "../../utils/createGrid";
 import Node from "../Node/Node";
 
@@ -25,6 +25,7 @@ const Grid = () => {
     setGrid(initialGrid);
     //eslint-disable-next-line
   }, []);
+
   const handleMouseDown = (e) => {
     e.preventDefault();
     setMouseDown(true);
@@ -33,7 +34,9 @@ const Grid = () => {
     setMouseDown(false);
   };
   const updateWithWalls = (col, row) => {
-    console.log(col, row);
+    let gridCopy = [...grid];
+    gridCopy[row][col].isWall = true;
+    setGrid(gridCopy);
   };
   return (
     <>
