@@ -8,8 +8,13 @@ const Node = ({
   isFinish,
   isStart,
   mouseDown,
+  mouseDownOnFinish,
+  mouseDownOnStart,
   updateWithWalls,
-  setMouseDownStartOrFinish,
+  updateStartOrFinish,
+  setmouseDownOnFinish,
+  setmouseDownOnStart,
+  setMouseDown,
 }) => {
   const nodeClass = isWall
     ? "wall"
@@ -20,6 +25,9 @@ const Node = ({
     : null;
 
   const handleMouseEnter = () => {
+    if (mouseDownOnStart || mouseDownOnFinish) {
+      updateStartOrFinish(col, row);
+    }
     if (mouseDown) {
       if (isStart || isFinish) {
         return;
@@ -28,17 +36,21 @@ const Node = ({
       }
     }
   };
-  const handleMouseDown = () => {
-    if (isStart || isFinish) {
-      setMouseDownStartOrFinish(true);
+  const handleMouseDown = (e) => {
+    e.preventDefault();
+    if (isStart) {
+      setmouseDownOnStart(true);
+    } else if (isFinish) {
+      setmouseDownOnFinish(true);
     } else {
+      setMouseDown(true);
       updateWithWalls(col, row, isWall);
     }
   };
 
   return (
     <td
-      onMouseDown={() => handleMouseDown()}
+      onMouseDown={(e) => handleMouseDown(e)}
       onMouseEnter={() => handleMouseEnter()}
       className={`node ${row}-${col} ${nodeClass}`}
     ></td>
