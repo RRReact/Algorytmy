@@ -26,7 +26,11 @@ const Node = ({
 
   const handleMouseEnter = () => {
     if (mouseDownOnStart || mouseDownOnFinish) {
-      updateStartOrFinish(col, row);
+      if (isStart || isFinish || isWall) {
+        return;
+      } else {
+        updateStartOrFinish(col, row);
+      }
     }
     if (mouseDown) {
       if (isStart || isFinish) {

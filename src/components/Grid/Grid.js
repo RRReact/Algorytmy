@@ -41,6 +41,7 @@ const Grid = () => {
   };
   const updateStartOrFinish = (col, row) => {
     let gridCopy = [...grid];
+    //finish node position change
     if (mouseDownOnFinish) {
       gridCopy.map((gridC) => {
         return gridC.map((g) => {
@@ -49,7 +50,9 @@ const Grid = () => {
       });
       gridCopy[row][col].isFinish = true;
       setGrid(gridCopy);
-    } else if (mouseDownOnStart) {
+    }
+    //start node position change
+    else if (mouseDownOnStart) {
       gridCopy.map((gridC) => {
         return gridC.map((g) => {
           return (g.isStart = false);
