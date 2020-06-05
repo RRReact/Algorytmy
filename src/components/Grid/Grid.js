@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-// import { dijkstra } from "../../algorithms/dijkstra";
+import { dijkstra } from "../../algorithms/dijkstra";
 import { createGrid } from "../../utils/createGrid";
 import Node from "../Node/Node";
 
@@ -8,23 +8,18 @@ import "./Grid.css";
 const Grid = () => {
   // initial start and finish nodes coordinates
 
-  const START_ROW = 10;
-  const START_COL = 10;
-  const FINISH_COL = 30;
-  const FINISH_ROW = 10;
   const [grid, setGrid] = useState([]);
+  const [startRow, setStartRow] = useState(10);
+  const [startCol, setStartCol] = useState(10);
+  const [finishCol, setFinishCol] = useState(30);
+  const [finishRow, setFinishRow] = useState(10);
   const [mouseDown, setMouseDown] = useState(false);
   const [mouseDownOnFinish, setmouseDownOnFinish] = useState(false);
   const [mouseDownOnStart, setmouseDownOnStart] = useState(false);
 
   //make a new grid on mount with start and finish nodes
   useEffect(() => {
-    const initialGrid = createGrid(
-      FINISH_COL,
-      FINISH_ROW,
-      START_COL,
-      START_ROW
-    );
+    const initialGrid = createGrid(finishCol, finishRow, startCol, startRow);
     setGrid(initialGrid);
     //eslint-disable-next-line
   }, []);
@@ -33,6 +28,12 @@ const Grid = () => {
     setMouseDown(false);
     setmouseDownOnStart(false);
     setmouseDownOnFinish(false);
+  };
+  const handleClick = () => {
+    const startNode = grid[startRow][startCol];
+    const finishNode = grid[finishRow][finishCol];
+
+    dijkstra(grid, startNode, finishNode);
   };
   const updateWithWalls = (col, row, isWall) => {
     let gridCopy = [...grid];
@@ -43,6 +44,8 @@ const Grid = () => {
     let gridCopy = [...grid];
     //finish node position change
     if (mouseDownOnFinish) {
+      setFinishCol(col);
+      setFinishRow(row);
       gridCopy.map((gridC) => {
         return gridC.map((g) => {
           return (g.isFinish = false);
@@ -53,6 +56,8 @@ const Grid = () => {
     }
     //start node position change
     else if (mouseDownOnStart) {
+      setStartCol(col);
+      setStartRow(row);
       gridCopy.map((gridC) => {
         return gridC.map((g) => {
           return (g.isStart = false);
@@ -64,13 +69,21 @@ const Grid = () => {
   };
   return (
     <>
+      <button onClick={handleClick}>start</button>
       <table onMouseUp={handleMouseUp} className="grid">
         <tbody>
           {grid.map((row, rowId) => {
             return (
               <tr className={`row ${rowId}`} key={rowId}>
                 {row.map((node) => {
-                  const { col, row, isStart, isFinish, isWall } = node;
+                  const {
+                    col,
+                    row,
+                    isStart,
+                    isFinish,
+                    isWall,
+                    isVisited,
+                  } = node;
                   return (
                     <Node
                       key={`${row}-${col}`}
@@ -79,6 +92,7 @@ const Grid = () => {
                       isStart={isStart}
                       isWall={isWall}
                       isFinish={isFinish}
+                      isVisited={isVisited}
                       mouseDown={mouseDown}
                       mouseDownOnStart={mouseDownOnStart}
                       mouseDownOnFinish={mouseDownOnFinish}

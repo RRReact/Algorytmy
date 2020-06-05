@@ -7,6 +7,7 @@ const Node = ({
   isWall,
   isFinish,
   isStart,
+  isVisited,
   mouseDown,
   mouseDownOnFinish,
   mouseDownOnStart,
@@ -22,6 +23,8 @@ const Node = ({
     ? "start"
     : isFinish
     ? "finish"
+    : isVisited
+    ? "visited"
     : null;
 
   const handleMouseEnter = () => {

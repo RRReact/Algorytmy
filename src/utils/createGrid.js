@@ -19,7 +19,9 @@ const createNode = (col, row, finishCol, finishRow, startCol, startRow) => {
   return {
     col,
     row,
+    distance: Infinity,
     isWall: false,
+    isVisited: false,
     isFinish: col === finishCol && row === finishRow ? true : false,
     isStart: col === startCol && row === startRow ? true : false,
   };
