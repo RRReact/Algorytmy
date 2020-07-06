@@ -23,9 +23,7 @@ const Node = ({
     ? "start"
     : isFinish
     ? "finish"
-    : isVisited
-    ? "visited"
-    : null;
+    : "unvisited";
 
   const handleMouseEnter = () => {
     if (mouseDownOnStart || mouseDownOnFinish) {

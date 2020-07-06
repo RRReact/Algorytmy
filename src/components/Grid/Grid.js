@@ -29,14 +29,17 @@ const Grid = () => {
     setmouseDownOnStart(false);
     setmouseDownOnFinish(false);
   };
-  const handleClick = () => {
+  const handleStartClick = () => {
     const startNode = grid[startRow][startCol];
     const finishNode = grid[finishRow][finishCol];
 
-    dijkstra(grid, startNode, finishNode);
+    const listOfVisitedNodesInOrder = dijkstra(grid, startNode, finishNode);
+    console.log(listOfVisitedNodesInOrder);
+
+    // getNodesInShortestPathOrder(finishNode);
   };
   const updateWithWalls = (col, row, isWall) => {
-    let gridCopy = [...grid];
+    const gridCopy = [...grid];
     gridCopy[row][col].isWall = !isWall;
     setGrid(gridCopy);
   };
@@ -69,7 +72,7 @@ const Grid = () => {
   };
   return (
     <>
-      <button onClick={handleClick}>start</button>
+      <button onClick={handleStartClick}>start</button>
       <table onMouseUp={handleMouseUp} className="grid">
         <tbody>
           {grid.map((row, rowId) => {
