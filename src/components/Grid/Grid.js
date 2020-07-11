@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { dijkstra } from "../../algorithms/dijkstra";
+import {
+  dijkstra,
+  getNodesInShortestPathOrder,
+} from "../../algorithms/dijkstra";
 import { createGrid } from "../../utils/createGrid";
 import Node from "../Node/Node";
 
@@ -23,20 +26,19 @@ const Grid = () => {
     setGrid(initialGrid);
     //eslint-disable-next-line
   }, []);
-
+  useEffect(() => {}, []);
   const handleMouseUp = () => {
     setMouseDown(false);
     setmouseDownOnStart(false);
     setmouseDownOnFinish(false);
   };
   const handleStartClick = () => {
+    const gridCopy = [...grid];
     const startNode = grid[startRow][startCol];
     const finishNode = grid[finishRow][finishCol];
-
-    const listOfVisitedNodesInOrder = dijkstra(grid, startNode, finishNode);
-    console.log(listOfVisitedNodesInOrder);
-
-    // getNodesInShortestPathOrder(finishNode);
+    const listOfVisitedNodesInOrder = dijkstra(gridCopy, startNode, finishNode);
+    const nodesInShortestPathOrder = getNodesInShortestPathOrder(finishNode);
+    animate(listOfVisitedNodesInOrder, nodesInShortestPathOrder);
   };
   const updateWithWalls = (col, row, isWall) => {
     const gridCopy = [...grid];
@@ -68,6 +70,34 @@ const Grid = () => {
       });
       gridCopy[row][col].isStart = true;
       setGrid(gridCopy);
+    }
+  };
+  const animate = (listOfVisitedNodesInOrder, nodesInShortestPathOrder) => {
+    for (let i = 0; i <= listOfVisitedNodesInOrder.length + 1; i++) {
+      if (i === listOfVisitedNodesInOrder.length) {
+        setTimeout(() => {
+          animateShortestPath(nodesInShortestPathOrder);
+        }, 10 * i);
+        return;
+      }
+      setTimeout(() => {
+        const node = listOfVisitedNodesInOrder[i];
+        const targetedNode = document.getElementById(`${node.row}-${node.col}`);
+
+        targetedNode.classList.remove("unvisited");
+        targetedNode.classList.add("visited");
+      }, 10 * i);
+    }
+  };
+  const animateShortestPath = (nodesInShortestPathOrder) => {
+    for (let i = 0; i < nodesInShortestPathOrder.length; i++) {
+      setTimeout(() => {
+        const node = nodesInShortestPathOrder[i];
+        console.log(node);
+        const targetedNode = document.getElementById(`${node.row}-${node.col}`);
+        targetedNode.classList.remove("visited");
+        targetedNode.classList.add("shortest-path");
+      }, 50 * i);
     }
   };
   return (

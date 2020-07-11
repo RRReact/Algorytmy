@@ -7,7 +7,6 @@ const Node = ({
   isWall,
   isFinish,
   isStart,
-  isVisited,
   mouseDown,
   mouseDownOnFinish,
   mouseDownOnStart,
@@ -57,7 +56,8 @@ const Node = ({
     <td
       onMouseDown={(e) => handleMouseDown(e)}
       onMouseEnter={() => handleMouseEnter()}
-      className={`node ${row}-${col} ${nodeClass}`}
+      className={`node ${nodeClass}`}
+      id={`${row}-${col}`}
     ></td>
   );
 };

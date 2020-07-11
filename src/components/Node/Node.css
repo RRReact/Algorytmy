@@ -3,6 +3,9 @@ td {
   height: 25px;
   border: 1px solid black;
 }
+.shortest-path {
+  background-color: hotpink;
+}
 .unvisited {
   background-color: white;
 }
