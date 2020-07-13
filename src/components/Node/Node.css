@@ -1,10 +1,11 @@
 td {
   width: 25px;
   height: 25px;
-  border: 1px solid black;
+  border: 1px solid gray;
 }
 .shortest-path {
-  background-color: hotpink;
+  background-color: yellow;
+  border-color: yellow;
 }
 .unvisited {
   background-color: white;
@@ -13,11 +14,32 @@ td {
   background-color: black;
 }
 .visited {
-  background-color: blue;
+  animation-name: visitAnimation;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
 }
 .start {
-  background-color: green;
+  background-image: url(../../assets/start.svg);
+  background-repeat: no-repeat;
 }
 .finish {
-  background-color: red;
+  background-image: url(../../assets/finish.svg);
+  background-repeat: no-repeat;
+}
+@keyframes visitAnimation {
+  0% {
+    background-color: rgb(160, 160, 199);
+  }
+  50% {
+    background-color: rgb(91, 83, 231);
+  }
+  75% {
+    background-color: rgb(212, 61, 48);
+  }
+  100% {
+    background-color: rgb(212, 186, 34);
+  }
 }

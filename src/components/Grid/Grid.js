@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-import {
-  dijkstra,
-  getNodesInShortestPathOrder,
-} from "../../algorithms/dijkstra";
+
 import { createGrid } from "../../utils/createGrid";
+
 import Node from "../Node/Node";
+import Controls from "../Controls/Controls";
 
 import "./Grid.css";
 
@@ -26,20 +25,13 @@ const Grid = () => {
     setGrid(initialGrid);
     //eslint-disable-next-line
   }, []);
-  useEffect(() => {}, []);
+
   const handleMouseUp = () => {
     setMouseDown(false);
     setmouseDownOnStart(false);
     setmouseDownOnFinish(false);
   };
-  const handleStartClick = () => {
-    const gridCopy = [...grid];
-    const startNode = grid[startRow][startCol];
-    const finishNode = grid[finishRow][finishCol];
-    const listOfVisitedNodesInOrder = dijkstra(gridCopy, startNode, finishNode);
-    const nodesInShortestPathOrder = getNodesInShortestPathOrder(finishNode);
-    animate(listOfVisitedNodesInOrder, nodesInShortestPathOrder);
-  };
+
   const updateWithWalls = (col, row, isWall) => {
     const gridCopy = [...grid];
     gridCopy[row][col].isWall = !isWall;
@@ -72,37 +64,17 @@ const Grid = () => {
       setGrid(gridCopy);
     }
   };
-  const animate = (listOfVisitedNodesInOrder, nodesInShortestPathOrder) => {
-    for (let i = 0; i <= listOfVisitedNodesInOrder.length + 1; i++) {
-      if (i === listOfVisitedNodesInOrder.length) {
-        setTimeout(() => {
-          animateShortestPath(nodesInShortestPathOrder);
-        }, 10 * i);
-        return;
-      }
-      setTimeout(() => {
-        const node = listOfVisitedNodesInOrder[i];
-        const targetedNode = document.getElementById(`${node.row}-${node.col}`);
 
-        targetedNode.classList.remove("unvisited");
-        targetedNode.classList.add("visited");
-      }, 10 * i);
-    }
-  };
-  const animateShortestPath = (nodesInShortestPathOrder) => {
-    for (let i = 0; i < nodesInShortestPathOrder.length; i++) {
-      setTimeout(() => {
-        const node = nodesInShortestPathOrder[i];
-        console.log(node);
-        const targetedNode = document.getElementById(`${node.row}-${node.col}`);
-        targetedNode.classList.remove("visited");
-        targetedNode.classList.add("shortest-path");
-      }, 50 * i);
-    }
-  };
   return (
     <>
-      <button onClick={handleStartClick}>start</button>
+      <Controls
+        grid={grid}
+        startCol={startCol}
+        startRow={startRow}
+        finishCol={finishCol}
+        finishRow={finishRow}
+        setGrid={setGrid}
+      />
       <table onMouseUp={handleMouseUp} className="grid">
         <tbody>
           {grid.map((row, rowId) => {
