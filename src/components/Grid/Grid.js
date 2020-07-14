@@ -11,6 +11,7 @@ const Grid = () => {
   // initial start and finish nodes coordinates
 
   const [grid, setGrid] = useState([]);
+  const [lockGridAndControls, setLockGridAndControls] = useState(false);
   const [startRow, setStartRow] = useState(10);
   const [startCol, setStartCol] = useState(10);
   const [finishCol, setFinishCol] = useState(30);
@@ -33,6 +34,8 @@ const Grid = () => {
   };
 
   const updateWithWalls = (col, row, isWall) => {
+    if (lockGridAndControls) return;
+
     const gridCopy = [...grid];
     gridCopy[row][col].isWall = !isWall;
     setGrid(gridCopy);
@@ -68,6 +71,8 @@ const Grid = () => {
   return (
     <>
       <Controls
+        setLockGridAndControls={setLockGridAndControls}
+        lockGridAndControls={lockGridAndControls}
         grid={grid}
         startCol={startCol}
         startRow={startRow}
