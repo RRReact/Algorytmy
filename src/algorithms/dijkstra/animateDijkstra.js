@@ -26,7 +26,6 @@ const animateShortestPath = (nodesInShortestPathOrder) => {
   for (let i = 0; i < nodesInShortestPathOrder.length; i++) {
     setTimeout(() => {
       const node = nodesInShortestPathOrder[i];
-
       const targetedNode = document.getElementById(`${node.row}-${node.col}`);
       targetedNode.classList.remove("visited");
       targetedNode.classList.add("shortest-path");

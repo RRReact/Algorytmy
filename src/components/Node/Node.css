@@ -12,6 +12,7 @@ td {
 }
 .wall {
   background-color: black;
+  border-color: black;
 }
 .visited {
   animation-name: visitAnimation;
@@ -29,6 +30,7 @@ td {
   background-image: url(../../assets/finish.svg);
   background-repeat: no-repeat;
 }
+
 @keyframes visitAnimation {
   0% {
     background-color: rgb(160, 160, 199);

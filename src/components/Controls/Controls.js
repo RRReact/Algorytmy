@@ -1,9 +1,14 @@
 import React, { useState } from "react";
-import { animate, resetClasses } from "../../algorithms/animateDijkstra";
+
+import "./Controls.css";
+import {
+  animate,
+  resetClasses,
+} from "../../algorithms/dijkstra/animateDijkstra";
 import {
   dijkstra,
   getNodesInShortestPathOrder,
-} from "../../algorithms/dijkstra";
+} from "../../algorithms/dijkstra/dijkstra";
 import { createGrid } from "../../utils/createGrid";
 
 const Controls = ({
@@ -32,10 +37,14 @@ const Controls = ({
     resetClasses(shortestPathNodes, visitedNodes);
   };
   return (
-    <>
-      <button onClick={handleStartClick}>start</button>
-      <button onClick={handleResetClick}>reset</button>
-    </>
+    <nav>
+      <button className="start-button" onClick={handleStartClick}>
+        START
+      </button>
+      <button className="reset-button" onClick={handleResetClick}>
+        reset
+      </button>
+    </nav>
   );
 };
 
