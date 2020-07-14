@@ -40,7 +40,7 @@ const Node = ({
       }
     }
   };
-  const handleMouseDown = (e) => {
+  const handleEventsDown = (e) => {
     e.preventDefault();
     if (isStart) {
       setmouseDownOnStart(true);
@@ -54,7 +54,8 @@ const Node = ({
 
   return (
     <td
-      onMouseDown={(e) => handleMouseDown(e)}
+      onMouseDown={(e) => handleEventsDown(e)}
+      ontouchstart={(e) => handleEventsDown(e)}
       onMouseEnter={() => handleMouseEnter()}
       className={`node ${nodeClass}`}
       id={`${row}-${col}`}

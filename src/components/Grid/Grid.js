@@ -27,7 +27,7 @@ const Grid = () => {
     //eslint-disable-next-line
   }, []);
 
-  const handleMouseUp = () => {
+  const handleUpEvents = () => {
     setMouseDown(false);
     setmouseDownOnStart(false);
     setmouseDownOnFinish(false);
@@ -80,7 +80,11 @@ const Grid = () => {
         finishRow={finishRow}
         setGrid={setGrid}
       />
-      <table onMouseUp={handleMouseUp} className="grid">
+      <table
+        onMouseUp={handleUpEvents}
+        ontouchend={handleUpEvents}
+        className="grid"
+      >
         <tbody>
           {grid.map((row, rowId) => {
             return (
