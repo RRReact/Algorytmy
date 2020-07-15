@@ -12,21 +12,9 @@ nav {
   );
   margin-bottom: 2%;
 }
-.reset-button {
-  font-family: "Roboto", sans-serif;
-  height: 50%;
-  width: 100px;
-  margin-left: 20px;
-  background: none;
-  border: none;
-  outline: none;
-  margin: 0;
-  padding: 0;
-  cursor: pointer;
-  color: white;
-}
 
 .start-button {
+  font-family: "Roboto", sans-serif;
   height: 70%;
   width: 100px;
   margin-left: 20px;
@@ -37,6 +25,18 @@ nav {
   outline: none;
   border-radius: 10%;
 }
+select {
+  font-family: "Roboto", sans-serif;
+  margin-left: 20px;
+  height: 70%;
+  width: 100px;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+}
+
 .start-button:hover {
   background-color: #004edb;
 }

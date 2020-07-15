@@ -35,12 +35,12 @@ const Grid = () => {
 
   const updateWithWalls = (col, row, isWall) => {
     if (lockGridAndControls) return;
-
     const gridCopy = [...grid];
     gridCopy[row][col].isWall = !isWall;
     setGrid(gridCopy);
   };
   const updateStartOrFinish = (col, row) => {
+    if (lockGridAndControls) return;
     let gridCopy = [...grid];
     //finish node position change
     if (mouseDownOnFinish) {
@@ -69,7 +69,7 @@ const Grid = () => {
   };
 
   return (
-    <>
+    <div className="grid">
       <Controls
         setLockGridAndControls={setLockGridAndControls}
         lockGridAndControls={lockGridAndControls}
@@ -80,11 +80,7 @@ const Grid = () => {
         finishRow={finishRow}
         setGrid={setGrid}
       />
-      <table
-        onMouseUp={handleUpEvents}
-        ontouchend={handleUpEvents}
-        className="grid"
-      >
+      <table onMouseUp={handleUpEvents}>
         <tbody>
           {grid.map((row, rowId) => {
             return (
@@ -123,7 +119,7 @@ const Grid = () => {
           })}
         </tbody>
       </table>
-    </>
+    </div>
   );
 };
 

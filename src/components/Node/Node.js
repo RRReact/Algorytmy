@@ -55,8 +55,7 @@ const Node = ({
   return (
     <td
       onMouseDown={(e) => handleEventsDown(e)}
-      ontouchstart={(e) => handleEventsDown(e)}
-      onMouseEnter={() => handleMouseEnter()}
+      onMouseEnter={(e) => handleMouseEnter(e)}
       className={`node ${nodeClass}`}
       id={`${row}-${col}`}
     ></td>

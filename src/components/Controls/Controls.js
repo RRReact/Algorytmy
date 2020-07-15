@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-import "./Controls.css";
 import {
   animate,
   resetClasses,
@@ -10,6 +9,8 @@ import {
   getNodesInShortestPathOrder,
 } from "../../algorithms/dijkstra/dijkstra";
 import { createGrid } from "../../utils/createGrid";
+
+import "./Controls.css";
 
 const Controls = ({
   setLockGridAndControls,
@@ -58,8 +59,13 @@ const Controls = ({
   return (
     <nav>
       <button className="start-button" onClick={handleStartOrResetClick}>
-        {startOrReset === "start" ? "START" : "reset"}
+        {startOrReset === "start" ? "START" : "RESET"}
       </button>
+      <select name="" id="">
+        <option defaultValue value="Dijkstra">
+          Dijkstra
+        </option>
+      </select>
     </nav>
   );
 };
