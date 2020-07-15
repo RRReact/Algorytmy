@@ -12,11 +12,18 @@ const Tutorial = ({ setToggleTutorial }) => {
         </p>
         <div className="flex-cards">
           <div className="card">
-            <img src={startGif} alt="" />{" "}
-            <p>Move start and finish node to desired place</p>
+            <img src={startGif} alt="" />
+            <p>
+              Move start and finish node by pressing left mouse button and
+              moving cursor to desired place.
+            </p>
           </div>
           <div className="card">
             <img src={wallsGif} alt="" />
+            <p>
+              Build walls by pressing left mouse button and enter nodes with
+              cursor.
+            </p>
           </div>
         </div>
       </div>

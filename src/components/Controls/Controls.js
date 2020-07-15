@@ -61,11 +61,11 @@ const Controls = ({
       <button className="start-button" onClick={handleStartOrResetClick}>
         {startOrReset === "start" ? "START" : "RESET"}
       </button>
-      <select name="" id="">
+      {/* <select name="" id="">
         <option defaultValue value="Dijkstra">
           Dijkstra
         </option>
-      </select>
+      </select> */}
     </nav>
   );
 };

@@ -11,7 +11,7 @@
 .text {
   position: relative;
   width: 50%;
-  height: 50%;
+  height: 40%;
   background-color: white;
 }
 .close {
@@ -39,5 +39,8 @@
 }
 .card img {
   margin: 10% 0;
+  width: 80%;
+}
+.card p {
   width: 80%;
 }
