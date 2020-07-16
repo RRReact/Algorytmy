@@ -1,0 +1,13 @@
+.legend-item-flex {
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+}
+.legend-item {
+  width: 25px;
+  height: 25px;
+  border: 1px solid gray;
+}
+.legend-item-flex p {
+  margin-left: 5px;
+}

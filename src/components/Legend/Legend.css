@@ -1,0 +1,7 @@
+.legend-flex {
+  display: flex;
+  flex-direction: row;
+  color: white;
+  font-family: "Roboto", sans-serif;
+  margin-left: 10px;
+}

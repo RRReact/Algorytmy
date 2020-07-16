@@ -25,10 +25,12 @@ td {
   animation-play-state: running;
 }
 .start {
+  background-color: white;
   background-image: url(../../assets/start.svg);
   background-repeat: no-repeat;
 }
 .finish {
+  background-color: white;
   background-image: url(../../assets/finish.svg);
   background-repeat: no-repeat;
 }

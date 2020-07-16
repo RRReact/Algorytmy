@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import Legend from "../Legend/Legend";
+
 import {
   animate,
   resetClasses,
@@ -61,6 +63,7 @@ const Controls = ({
       <button className="start-button" onClick={handleStartOrResetClick}>
         {startOrReset === "start" ? "START" : "RESET"}
       </button>
+      <Legend />
       {/* <select name="" id="">
         <option defaultValue value="Dijkstra">
           Dijkstra
