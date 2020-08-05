@@ -4,7 +4,7 @@ nav {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  background: rgb(103, 102, 113);
+
   background: linear-gradient(
     90deg,
     rgba(103, 102, 113, 1) 0%,
