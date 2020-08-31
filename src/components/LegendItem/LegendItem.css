@@ -1,4 +1,6 @@
 .legend-item-flex {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
   margin-left: 10px;
   display: flex;
   align-items: center;

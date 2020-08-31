@@ -3,9 +3,11 @@ td {
   height: 25px;
   border: 1px solid gray;
 }
-.shortest-path {
-  background-color: yellow;
-  border-color: yellow;
+.shortest-path,
+.start.shortest-path,
+.finish.shortest-path {
+  background-color: #9eff98;
+  border-color: #9eff98;
 }
 .unvisited {
   background-color: white;

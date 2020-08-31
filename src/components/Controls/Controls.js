@@ -59,7 +59,7 @@ const Controls = ({
   };
 
   return (
-    <nav>
+    <nav className="controls">
       <button className="start-button" onClick={handleStartOrResetClick}>
         {startOrReset === "start" ? "START" : "RESET"}
       </button>

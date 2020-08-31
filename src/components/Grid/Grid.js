@@ -69,7 +69,7 @@ const Grid = () => {
   };
 
   return (
-    <div className="grid">
+    <>
       <Controls
         setLockGridAndControls={setLockGridAndControls}
         lockGridAndControls={lockGridAndControls}
@@ -80,46 +80,48 @@ const Grid = () => {
         finishRow={finishRow}
         setGrid={setGrid}
       />
-      <table onMouseUp={handleUpEvents}>
-        <tbody>
-          {grid.map((row, rowId) => {
-            return (
-              <tr className={`row ${rowId}`} key={rowId}>
-                {row.map((node) => {
-                  const {
-                    col,
-                    row,
-                    isStart,
-                    isFinish,
-                    isWall,
-                    isVisited,
-                  } = node;
-                  return (
-                    <Node
-                      key={`${row}-${col}`}
-                      col={col}
-                      row={row}
-                      isStart={isStart}
-                      isWall={isWall}
-                      isFinish={isFinish}
-                      isVisited={isVisited}
-                      mouseDown={mouseDown}
-                      mouseDownOnStart={mouseDownOnStart}
-                      mouseDownOnFinish={mouseDownOnFinish}
-                      setMouseDown={setMouseDown}
-                      setmouseDownOnFinish={setmouseDownOnFinish}
-                      setmouseDownOnStart={setmouseDownOnStart}
-                      updateWithWalls={updateWithWalls}
-                      updateStartOrFinish={updateStartOrFinish}
-                    />
-                  );
-                })}
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    </div>
+      <div className="grid">
+        <table onMouseUp={handleUpEvents}>
+          <tbody>
+            {grid.map((row, rowId) => {
+              return (
+                <tr className={`row ${rowId}`} key={rowId}>
+                  {row.map((node) => {
+                    const {
+                      col,
+                      row,
+                      isStart,
+                      isFinish,
+                      isWall,
+                      isVisited,
+                    } = node;
+                    return (
+                      <Node
+                        key={`${row}-${col}`}
+                        col={col}
+                        row={row}
+                        isStart={isStart}
+                        isWall={isWall}
+                        isFinish={isFinish}
+                        isVisited={isVisited}
+                        mouseDown={mouseDown}
+                        mouseDownOnStart={mouseDownOnStart}
+                        mouseDownOnFinish={mouseDownOnFinish}
+                        setMouseDown={setMouseDown}
+                        setmouseDownOnFinish={setmouseDownOnFinish}
+                        setmouseDownOnStart={setmouseDownOnStart}
+                        updateWithWalls={updateWithWalls}
+                        updateStartOrFinish={updateStartOrFinish}
+                      />
+                    );
+                  })}
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </>
   );
 };
 
